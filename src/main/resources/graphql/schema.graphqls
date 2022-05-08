@@ -1,0 +1,35 @@
+type Game{
+
+    id: String!
+    name: String!
+    tags: [GameType]
+}
+
+enum GameType {
+    FPS,
+    MOBA,
+    STRATEGY,
+
+}
+
+type User{
+    id: ID!
+    username: String!
+    email: String!
+}
+
+
+input UserInput{
+    username: String!
+    email: String!
+}
+
+type Query {
+
+    info: String!
+}
+
+type Mutation {
+
+    createUser(request: UserInput!): User
+}
