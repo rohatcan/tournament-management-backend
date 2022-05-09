@@ -4,14 +4,27 @@ type User{
     email: String!
 }
 
-
-input UserInput{
+input CreateUserInput{
     username: String!
     email: String!
 }
 
+input UpdateUserInput{
+    id: ID!
+    username: String
+    email: String
+}
 
+type DeleteUserPayload{
+    id: ID!
+}
+
+type Query {
+    getAllUsers:[User]
+    getUserById(id: String!): User!
+}
 type Mutation {
-
-    createUser(request: UserInput!): User
+    createUser(request: CreateUserInput!): User!
+    updateUser(request: UpdateUserInput!): User!
+    deleteUser(id: String!): DeleteUserPayload!
 }
