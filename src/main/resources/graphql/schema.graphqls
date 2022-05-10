@@ -1,4 +1,12 @@
-type Query {
+schema {
+    query: Query,
+    mutation: Mutation
+}
 
-    info: String!
+type Query{
+
+}
+
+type Mutation{
+
 }

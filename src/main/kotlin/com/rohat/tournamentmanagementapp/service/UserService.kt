@@ -2,7 +2,7 @@ package com.rohat.tournamentmanagementapp.service
 
 import com.rohat.tournamentmanagementapp.extension.toUser
 import com.rohat.tournamentmanagementapp.graphql.input.user.UpdateUserInput
-import com.rohat.tournamentmanagementapp.graphql.input.user.UserInput
+import com.rohat.tournamentmanagementapp.graphql.input.user.CreateUserInput
 import com.rohat.tournamentmanagementapp.model.User
 import com.rohat.tournamentmanagementapp.repository.UserRepository
 import graphql.GraphQLException
@@ -25,14 +25,14 @@ class UserService(
         return userRepository.findByIdOrNull(id) ?: throw GraphQLException("User not found with id: $id")
     }
 
-    fun save(request: UserInput): User {
+    fun save(request: CreateUserInput): User {
 
         return userRepository.insert(request.toUser())
     }
 
     fun updateUser(request: UpdateUserInput): User {
 
-        var user = findUserById(request.id)
+        var user = findUserById(request.userId)
 
         if (request.email != null) {
             user.email = request.email

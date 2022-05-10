@@ -1,7 +1,7 @@
 package com.rohat.tournamentmanagementapp.graphql.resolver
 
 import com.rohat.tournamentmanagementapp.graphql.input.user.UpdateUserInput
-import com.rohat.tournamentmanagementapp.graphql.input.user.UserInput
+import com.rohat.tournamentmanagementapp.graphql.input.user.CreateUserInput
 import com.rohat.tournamentmanagementapp.graphql.payload.DeleteUserPayload
 import com.rohat.tournamentmanagementapp.model.User
 import com.rohat.tournamentmanagementapp.service.UserService
@@ -10,7 +10,7 @@ import graphql.kickstart.tools.GraphQLQueryResolver
 import org.springframework.stereotype.Controller
 
 @Controller
-class UserController(
+class UserResolver(
     private val userService: UserService
 ) : GraphQLQueryResolver, GraphQLMutationResolver {
 
@@ -24,7 +24,7 @@ class UserController(
         return userService.findUserById(id)
     }
 
-    fun createUser(request: UserInput): User {
+    fun createUser(request: CreateUserInput): User {
 
         return userService.save(request)
     }

@@ -1,5 +1,5 @@
 type User{
-    id: ID!
+    userId: ID!
     username: String!
     email: String!
 }
@@ -10,20 +10,20 @@ input CreateUserInput{
 }
 
 input UpdateUserInput{
-    id: ID!
+    userId: ID!
     username: String
     email: String
 }
 
 type DeleteUserPayload{
-    id: ID!
+    userId: ID!
 }
 
-type Query {
+extend type Query {
     getAllUsers:[User]
     getUserById(id: String!): User!
 }
-type Mutation {
+extend type Mutation {
     createUser(request: CreateUserInput!): User!
     updateUser(request: UpdateUserInput!): User!
     deleteUser(id: String!): DeleteUserPayload!
