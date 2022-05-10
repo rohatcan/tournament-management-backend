@@ -1,0 +1,37 @@
+type Tournament{
+    tournamentId: ID!
+    name: String!
+    tournamentStatus: ETournamentStatus!
+
+}
+
+enum ETournamentStatus{
+    NEW,
+    LIVE,
+    COMPLETE
+}
+
+input CreateTournamentInput{
+    tournamentId: String
+    name: String!
+}
+
+input UpdateTournamentInput{
+    tournamentId: ID!
+    name: String
+}
+
+type DeleteTournamentPayload{
+    tournamentId: ID!
+}
+
+extend type Query {
+    getTournaments:[Tournament]
+
+}
+
+extend type Mutation {
+    createTournament(request: CreateTournamentInput!): Tournament!
+    updateTournament(request: UpdateTournamentInput!): Tournament!
+    deleteTournament(id: String!): DeleteTournamentPayload!
+}
