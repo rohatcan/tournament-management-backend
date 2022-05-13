@@ -7,6 +7,13 @@ type User{
 input CreateUserInput{
     username: String!
     email: String!
+    password: String!
+}
+
+
+input LoginInput{
+    userName: String!
+    password: String!
 }
 
 input UpdateUserInput{
@@ -22,6 +29,7 @@ type DeleteUserPayload{
 extend type Query {
     getAllUsers:[User]
     getUserById(id: String!): User!
+    login(request: LoginInput!):String!
 }
 extend type Mutation {
     createUser(request: CreateUserInput!): User!

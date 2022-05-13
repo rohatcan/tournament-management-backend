@@ -4,15 +4,11 @@ import org.springframework.validation.annotation.Validated
 import javax.validation.constraints.NotNull
 
 @Validated
-data class CreateUserInput(
+data class LoginInput(
 
     @NotNull
-    val username: String,
+    val userName: String,
 
     @NotNull
-    val email: String,
-
-    @NotNull
-    val password: String,
-
-    )
+    val password: String
+)

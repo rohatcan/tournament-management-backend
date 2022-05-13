@@ -4,6 +4,12 @@ server:
   servlet:
     context-path: /api
 
+# JWT
+
+api:
+  jwtSecret: testsecret
+  jwtExpirationInMs: 77760000
+
 
 spring:
   data:

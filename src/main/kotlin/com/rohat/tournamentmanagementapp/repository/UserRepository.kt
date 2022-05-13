@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UserRepository : MongoRepository<User, String>{
 
+    fun findUserByUsernameEquals(username: String):User?
+
 }

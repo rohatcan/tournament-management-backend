@@ -11,9 +11,10 @@ data class User(
     var userId: String? = null,
 
     @Indexed(unique = true)
-    var username: String? = "",
+    var username: String = "",
 
     @Indexed(unique = true)
     var email: String? = "",
 
+    var password: String
     )
