@@ -1,0 +1,8 @@
+query GET_USER_BY_ID {
+    getUserById(id:"627ec9bfb7c787411b226dc0")
+    {
+        email,
+        userId,
+        username
+    }
+}
