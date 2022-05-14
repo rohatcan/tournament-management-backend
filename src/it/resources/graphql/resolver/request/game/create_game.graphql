@@ -1,0 +1,13 @@
+mutation CREATE_GAME {
+    createGame(request:{
+        id: "poe2"
+        name: "Path Of Exile2"
+        tags: [FPS]
+    })
+    {
+        id
+        name
+        tags
+
+    }
+}

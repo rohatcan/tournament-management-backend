@@ -11,5 +11,5 @@ data class Game(
 //    @Indexed(unique = true)
     val name: String,
 
-    val tags: Set<EGameType?>
+    val tags: MutableSet<EGameType>?
 )

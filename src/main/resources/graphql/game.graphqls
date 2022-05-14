@@ -2,10 +2,10 @@ type Game{
 
     id: String!
     name: String!
-    tags: [GameType]
+    tags: [EGameType]
 }
 
-enum GameType {
+enum EGameType {
     FPS,
     MOBA,
     STRATEGY,
@@ -15,6 +15,12 @@ enum GameType {
 input CreateGameInput{
     id: String
     name: String!
+    tags: [EGameType]
+}
+
+
+type DeleteGamePayload{
+    gameId: ID!
 }
 
 extend type Query {
@@ -23,5 +29,6 @@ extend type Query {
 }
 extend type Mutation {
     createGame(request: CreateGameInput!): Game!
+    deleteGame(gameId: ID!): DeleteGamePayload
 }
 

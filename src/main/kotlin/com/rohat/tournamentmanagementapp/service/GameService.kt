@@ -28,10 +28,17 @@ class GameService(
         val newGame = Game(
             id = request.id,
             name = request.name,
-            tags = HashSet<EGameType>()
+            tags = request.tags
 
         )
         return gameRepository.insert(newGame)
     }
+
+    fun deleteGameById(id: String) {
+
+        val game = findGameById(id)
+        return gameRepository.delete(game)
+    }
+
 
 }

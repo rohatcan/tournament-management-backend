@@ -1,6 +1,7 @@
 package com.rohat.tournamentmanagementapp.graphql.resolver
 
 import com.rohat.tournamentmanagementapp.graphql.input.game.CreateGameInput
+import com.rohat.tournamentmanagementapp.graphql.payload.DeleteGamePayload
 import com.rohat.tournamentmanagementapp.model.Game
 import com.rohat.tournamentmanagementapp.service.GameService
 import graphql.kickstart.tools.GraphQLMutationResolver
@@ -29,6 +30,13 @@ class GameResolver(
     fun createGame(request: CreateGameInput): Game? {
 
         return gameService.save(request)
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    fun deleteGame(gameId: String): DeleteGamePayload {
+
+        gameService.deleteGameById(gameId)
+        return DeleteGamePayload(gameId)
     }
 
 }

@@ -1,0 +1,11 @@
+{
+  "data": {
+    "createGame": {
+      "id": "poe2",
+      "name": "Path Of Exile2",
+      "tags": [
+        "FPS"
+      ]
+    }
+  }
+}

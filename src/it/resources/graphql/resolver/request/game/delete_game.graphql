@@ -1,0 +1,6 @@
+mutation DELETE_GAME {
+    deleteGame(gameId: "poe2")
+    {
+        gameId
+    }
+}
