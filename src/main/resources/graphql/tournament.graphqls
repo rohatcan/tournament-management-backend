@@ -2,6 +2,12 @@ type Tournament{
     tournamentId: ID!
     name: String!
     tournamentStatus: ETournamentStatus!
+    game: Game!
+    participants: [Participant]
+    owner: User!
+    teamSize: Int
+    prizeInUsd: Int
+    winner: User
 
 }
 
@@ -13,12 +19,17 @@ enum ETournamentStatus{
 
 input CreateTournamentInput{
     tournamentId: String
+    ownerId: String!
+    gameId: String!
     name: String!
+    teamSize: Int
 }
 
 input UpdateTournamentInput{
     tournamentId: ID!
     name: String
+    status: ETournamentStatus
+    winnerId: String
 }
 
 type DeleteTournamentPayload{
