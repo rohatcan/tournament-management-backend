@@ -7,6 +7,9 @@ import org.springframework.data.mongodb.core.mapping.Document
 data class Game(
     @Id
     val id: String? = null,
+
+//    @Indexed(unique = true)
     val name: String,
-    val tags: Set<EGameType>
+
+    val tags: Set<EGameType?>
 )
