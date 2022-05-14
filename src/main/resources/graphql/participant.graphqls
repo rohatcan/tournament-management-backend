@@ -1,0 +1,39 @@
+type Participant{
+    participantId: ID!
+    tournament: Tournament!
+    name: String!
+    members: [User]
+    leader: User
+}
+
+input CreateParticipantInput{
+    name: String!
+    tournamentId: String
+}
+
+input UpdateParticipantInput{
+    participantId: ID!
+    name: String
+    leaderId: ID
+    memberIds: [ID]
+}
+
+input AddMemberInput{
+    userId: ID!
+    participantId: ID
+}
+
+type DeleteParticipantPayload{
+    participantId: ID!
+}
+
+extend type Query {
+    participantsByTournament(tournamentId: ID!):[Participant]
+    getParticipantById(id: ID!): Participant
+}
+extend type Mutation {
+    createParticipant(request: CreateParticipantInput!): Participant
+    addMember(request: AddMemberInput): Participant
+    updateParticipant(request: UpdateParticipantInput!): Participant
+    deleteParticipant(id: ID!): DeleteParticipantPayload
+}
