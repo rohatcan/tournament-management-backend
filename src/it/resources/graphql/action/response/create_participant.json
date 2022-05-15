@@ -1,0 +1,12 @@
+{
+  "data": {
+    "createParticipant": {
+      "leader": {
+        "username": "rohat"
+      },
+      "name": "winner team",
+      "members": [],
+      "participantId": "finish_tournament_participation_id"
+    }
+  }
+}

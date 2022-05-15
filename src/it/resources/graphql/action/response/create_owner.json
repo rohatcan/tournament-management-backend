@@ -1,0 +1,9 @@
+{
+  "data": {
+    "createUser": {
+      "userId": "finish_tournament_owner_id",
+      "username": "finish_tournament_owner",
+      "email": "finish_tournament_owner@test.com"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+mutation CREATE_PARTICIPANT{
+    createParticipant(request: {
+        participantId: "finish_tournament_participation_id"
+        name: "winner team"
+        tournamentId: "finish_tournament_id"
+    })
+    {
+        leader{
+            username
+        }
+        name
+        members{
+            username
+        }
+        participantId
+    }
+}

@@ -1,0 +1,10 @@
+mutation CHOOSE_WINNER {
+    chooseWinner(request: {
+        winnerId: "finish_tournament_participation_id"
+        tournamentId: "finish_tournament_id"
+    })
+    {
+        participantId
+        name
+    }
+}

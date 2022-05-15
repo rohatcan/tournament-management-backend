@@ -1,0 +1,20 @@
+mutation CREATE_TOURNAMENT{
+    createTournament(request : {
+        tournamentId: "finish_tournament_id"
+        name: "finish_tournament_name"
+        ownerId: "finish_tournament_owner_id"
+        gameId: "finish_tournament_game_id"
+        teamSize: 3
+
+    })
+    {
+        tournamentId
+        name
+        tournamentId
+        tournamentStatus
+        game{
+            name
+        }
+        teamSize
+    }
+}

@@ -1,0 +1,5 @@
+mutation DELETE_PARTICIPANT {
+    deleteParticipant(participantId: "finish_tournament_participation_id"){
+        participantId
+    }
+}

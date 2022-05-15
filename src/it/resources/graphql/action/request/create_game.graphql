@@ -1,0 +1,13 @@
+mutation CREATE_GAME {
+    createGame(request:{
+        id: "finish_tournament_game_id"
+        name: "finish_tournament_game"
+        tags: [MOBA]
+    })
+    {
+        id
+        name
+        tags
+
+    }
+}

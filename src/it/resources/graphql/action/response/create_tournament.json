@@ -1,0 +1,13 @@
+{
+  "data": {
+    "createTournament": {
+      "tournamentId": "finish_tournament_id",
+      "name": "finish_tournament_name",
+      "tournamentStatus": "NEW",
+      "game": {
+        "name": "finish_tournament_game"
+      },
+      "teamSize": 3
+    }
+  }
+}

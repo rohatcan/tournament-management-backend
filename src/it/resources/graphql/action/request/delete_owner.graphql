@@ -1,0 +1,7 @@
+
+mutation DELETE_USER {
+    deleteUser(id : "finish_tournament_owner_id")
+    {
+        userId
+    }
+}

@@ -1,0 +1,7 @@
+mutation DELETE_TOURNAMENT {
+    deleteTournament(id:"finish_tournament_id")
+    {
+        tournamentId
+
+    }
+}

@@ -1,0 +1,14 @@
+mutation CREATE_USER {
+    createUser(request: {
+        userId: "finish_tournament_owner_id"
+        password: "pass"
+        username:"finish_tournament_owner",
+        email:"finish_tournament_owner@test.com"
+    })
+    {
+        userId,
+        username,
+        email,
+
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "data": {
+    "createGame": {
+      "id": "finish_tournament_game_id",
+      "name": "finish_tournament_game",
+      "tags": [
+        "MOBA"
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+mutation DELETE_GAME {
+    deleteGame(gameId: "finish_tournament_game_id")
+    {
+        gameId
+    }
+}
