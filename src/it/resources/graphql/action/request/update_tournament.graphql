@@ -1,0 +1,12 @@
+mutation UPDATE_TOURNAMENT{
+    updateTournament(request: {
+        tournamentId: "finish_tournament_id"
+        name: "finish_tournament_name_updated"
+        status: COMPLETE
+    })
+    {
+        name
+        tournamentId
+        tournamentStatus
+    }
+}

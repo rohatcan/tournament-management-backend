@@ -18,11 +18,11 @@ data class Tournament(
 
     var game: Game,
 
-    var participants: MutableList<Participant>?,
+    var participants: MutableList<Participant?>,
 
     var owner: User,
 
     val prizeInUsd: BigDecimal?,
 
-    var winner: User?
+    var winner: Participant?
 )

@@ -15,4 +15,6 @@ data class CreateUserInput(
     @NotNull
     val password: String,
 
-    )
+    val userId: String?
+
+)

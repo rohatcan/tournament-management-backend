@@ -1,6 +1,5 @@
 type Participant{
     participantId: ID!
-    tournament: Tournament!
     name: String!
     members: [User]
     leader: User
@@ -9,6 +8,7 @@ type Participant{
 input CreateParticipantInput{
     name: String!
     tournamentId: String
+    participantId: String
 }
 
 input UpdateParticipantInput{
@@ -23,17 +23,22 @@ input AddMemberInput{
     participantId: ID
 }
 
+input ChooseWinnerInput{
+    tournamentId: ID!
+    winnerId: ID!
+}
+
 type DeleteParticipantPayload{
     participantId: ID!
 }
 
 extend type Query {
-    participantsByTournament(tournamentId: ID!):[Participant]
     getParticipantById(id: ID!): Participant
 }
 extend type Mutation {
     createParticipant(request: CreateParticipantInput!): Participant
     addMember(request: AddMemberInput): Participant
     updateParticipant(request: UpdateParticipantInput!): Participant
-    deleteParticipant(id: ID!): DeleteParticipantPayload
+    deleteParticipant(participantId: ID!): DeleteParticipantPayload
+    chooseWinner(request: ChooseWinnerInput!): Participant
 }

@@ -4,7 +4,10 @@ import com.rohat.tournamentmanagementapp.extension.toParticipant
 import com.rohat.tournamentmanagementapp.graphql.input.participant.AddMemberInput
 import com.rohat.tournamentmanagementapp.graphql.input.participant.CreateParticipantInput
 import com.rohat.tournamentmanagementapp.graphql.input.participant.UpdateParticipantInput
+import com.rohat.tournamentmanagementapp.graphql.input.tournament.ChooseWinnerInput
+import com.rohat.tournamentmanagementapp.model.ETournamentStatus
 import com.rohat.tournamentmanagementapp.model.Participant
+import com.rohat.tournamentmanagementapp.model.Tournament
 import com.rohat.tournamentmanagementapp.repository.ParticipantRepository
 import graphql.GraphQLException
 import org.springframework.data.repository.findByIdOrNull
@@ -18,12 +21,6 @@ class ParticipantService(
     private val tournamentService: TournamentService
 
 ) {
-
-    fun findAllByTournament(tournamentId: String): Collection<Participant> {
-
-        val tournament = tournamentService.findTournamentById(tournamentId)
-        return participantRepository.findAllByTournament(tournament = tournament)
-    }
 
     fun findParticipantById(id: String): Participant {
 
@@ -42,7 +39,8 @@ class ParticipantService(
         }
         val tournament = tournamentService.findTournamentById(request.tournamentId)
         val participant = request.toParticipant(tournament = tournament, leader = leader)
-        tournament.participants?.add(participant)
+        val participants = tournament.participants
+        participants.add(participant)
         tournamentService.save(tournament)
         return participantRepository.save(participant)
     }
@@ -63,10 +61,10 @@ class ParticipantService(
     fun addMemberToParticipant(request: AddMemberInput): Participant {
 
         val participant = findParticipantById(request.participantId)
-        if (participant.tournament.teamSize <= participant.members.size) {
-            throw GraphQLException("Team is full")
-
-        }
+//        if (participant.tournament.teamSize <= participant.members.size) {
+//            throw GraphQLException("Team is full")
+//
+//        }
         val memberToAdd = userService.findUserById(request.userId)
         val members = participant.members
         members.add(memberToAdd)
@@ -74,6 +72,22 @@ class ParticipantService(
         participantRepository.save(participant)
 
         return participant
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    fun chooseWinner(request: ChooseWinnerInput): Participant {
+
+        val winner: Participant = findParticipantById(request.winnerId)
+        val tournament: Tournament = tournamentService.findTournamentById(request.tournamentId)
+
+        if (tournament.tournamentStatus != ETournamentStatus.COMPLETE) {
+            throw GraphQLException("Tournament not completed yet")
+        }
+        // todo add check if winner is participated
+
+        tournament.winner = winner
+        tournamentService.save(tournament)
+        return winner
     }
 
 

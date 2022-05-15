@@ -3,6 +3,7 @@ package com.rohat.tournamentmanagementapp.graphql.resolver
 import com.rohat.tournamentmanagementapp.graphql.input.participant.AddMemberInput
 import com.rohat.tournamentmanagementapp.graphql.input.participant.CreateParticipantInput
 import com.rohat.tournamentmanagementapp.graphql.input.participant.UpdateParticipantInput
+import com.rohat.tournamentmanagementapp.graphql.input.tournament.ChooseWinnerInput
 import com.rohat.tournamentmanagementapp.graphql.payload.DeleteParticipantPayload
 import com.rohat.tournamentmanagementapp.model.Participant
 import com.rohat.tournamentmanagementapp.service.ParticipantService
@@ -14,11 +15,6 @@ import org.springframework.stereotype.Controller
 class ParticipantResolver(
     private val participantService: ParticipantService
 ) : GraphQLQueryResolver, GraphQLMutationResolver {
-
-    fun getParticipantsByTournament(tournamentId: String): Collection<Participant> {
-
-        return participantService.findAllByTournament(tournamentId)
-    }
 
     fun getParticipantById(id: String): Participant {
 
@@ -40,10 +36,15 @@ class ParticipantResolver(
         return participantService.addMemberToParticipant(request)
     }
 
-    fun deleteParticipant(id: String): DeleteParticipantPayload {
+    fun deleteParticipant(participantId: String): DeleteParticipantPayload {
 
-        participantService.deleteParticipantById(id)
-        return DeleteParticipantPayload(id)
+        participantService.deleteParticipantById(participantId)
+        return DeleteParticipantPayload(participantId)
 
+    }
+
+    fun chooseWinner(request: ChooseWinnerInput): Participant {
+
+        return participantService.chooseWinner(request)
     }
 }

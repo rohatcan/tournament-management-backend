@@ -8,8 +8,8 @@ import com.rohat.tournamentmanagementapp.model.User
 fun CreateParticipantInput.toParticipant(tournament: Tournament, leader: User): Participant {
 
     return Participant(
+        participantId = this.participantId,
         name = this.name,
-        tournament = tournament,
         members = mutableListOf(),
         leader = leader
     )

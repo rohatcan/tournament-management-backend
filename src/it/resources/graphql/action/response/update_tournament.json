@@ -1,0 +1,9 @@
+{
+  "data": {
+    "updateTournament": {
+      "name": "finish_tournament_name_updated",
+      "tournamentId": "finish_tournament_id",
+      "tournamentStatus": "COMPLETE"
+    }
+  }
+}

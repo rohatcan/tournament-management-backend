@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository
 @Repository
 interface ParticipantRepository : MongoRepository<Participant, String>{
 
-    fun findAllByTournament(tournament: Tournament): Collection<Participant>
 }

@@ -7,7 +7,7 @@ type Tournament{
     owner: User!
     teamSize: Int
     prizeInUsd: Int
-    winner: User
+    winner: Participant
 
 }
 

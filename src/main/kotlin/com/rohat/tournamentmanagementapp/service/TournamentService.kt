@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service
 class TournamentService(
     private val tournamentRepository: TournamentRepository,
     private val gameService: GameService,
-    private val userService: UserService
+    private val userService: UserService,
 ) {
 
     fun findAll(): Collection<Tournament> {
@@ -66,11 +66,9 @@ class TournamentService(
 
     private fun changeTournamentStatusToComplete(request: UpdateTournamentInput, tournament: Tournament) {
 
-        val winner = request.winnerId?.let { userService.findUserById(it) }
-        tournament.winner = winner
         tournament.tournamentStatus = ETournamentStatus.COMPLETE
         save(tournament)
-        TODO("pick winner and update participant stats")
+        //TODO("update stats")
     }
 
     fun deleteTournamentById(tournamentId: String): Unit {
