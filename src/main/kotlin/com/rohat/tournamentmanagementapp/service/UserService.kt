@@ -61,10 +61,10 @@ class UserService(
             ?: throw GraphQLException("User not found with user name: $username")
     }
 
-    fun getCurrentUser(): User? {
+    fun getCurrentUser(): User {
 
         val principal = SecurityContextHolder.getContext().authentication.principal as UserPrincipal
-        return userRepository.findUserByUsernameEquals(principal.username)
+        return findUserByUserName(principal.username)
     }
 
 

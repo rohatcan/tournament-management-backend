@@ -22,6 +22,7 @@ class UserResolver(
         return userService.findAll()
     }
 
+    @PreAuthorize("isAuthenticated()")
     fun getUserById(id: String): User {
 
         return userService.findUserById(id)
